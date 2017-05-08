@@ -173,7 +173,7 @@ func generateSource(srcPath string) (file *os.File, err error) {
 import (
 	"net/http"
 
-	"github.com/rakyll/statik/fs"
+	"github.com/ThisGuyCodes/statik/fs"
 )
 
 const data = "`, namePackage)
