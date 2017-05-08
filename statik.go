@@ -171,14 +171,17 @@ func generateSource(srcPath string) (file *os.File, err error) {
 	fmt.Fprintf(&qb, `package %s
 
 import (
+	"net/http"
+
 	"github.com/rakyll/statik/fs"
 )
 
-func init() {
-	data := "`, namePackage)
+const data = "`, namePackage)
 	FprintZipData(&qb, buffer.Bytes())
 	fmt.Fprint(&qb, `"
-	fs.Register(data)
+
+func New() (http.FileSystem, error) {
+	return fs.New(data)
 }
 `)
 
